@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import UserFormAdd from "./components/TheAddForm";
+import ListUsers from "./components/TheListUser";
 import {
     Modal,
     ModalHeader,
@@ -24,7 +25,8 @@ class UserList extends Component {
                 fullname: "",
                 password: "",
                 password_confirmation: "",
-            }
+            },
+            users: []
         };
     }
 
@@ -40,10 +42,15 @@ class UserList extends Component {
      * Add New User
      */
     addNewUser() {
+        const {users, addNewUserDetail} = this.state;
+        users.push(addNewUserDetail);
         this.setState({
             loading: true,
             errorPopup: true,
+            users: users
         });
+        
+        this.onAddUpdateUserModalClose();
     }
 
     /**
@@ -80,8 +87,11 @@ class UserList extends Component {
     }
 
     render() {
-      console.log('user views', this)
-    	const {addNewUserModal, errors, addNewUserDetail, loading} = this.state;
+    	const {users, addNewUserModal, errors, addNewUserDetail, loading} = this.state;
+
+        const lists = users.map((item) => 
+            <ListUsers key={item.fullname} userRecord={item}></ListUsers>
+        );
         
         return (
             <div className="page-content">
@@ -99,6 +109,9 @@ class UserList extends Component {
                   </Button>
               </div>
             	
+              <div className="user-list">
+                  {lists}
+              </div>
               <Modal aria-labelledby="simple-modal-title"
                     isOpen={addNewUserModal}
                     toggle={() => this.onAddUpdateUserModalClose()}
