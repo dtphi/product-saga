@@ -9,10 +9,10 @@ const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware];
 
 export function configureStore(initialState) {
-    const preloadedState = (process.env.NODE_ENV === 'production') ? 
-            initialState : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+    /*const preloadedState = (process.env.NODE_ENV === 'production') ? 
+            initialState : window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();*/
     const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    console.log('dev',preloadedState)
+    
     const store = createStore(
         reducers,
         //preloadedState,

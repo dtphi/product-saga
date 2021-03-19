@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
 class PageLoader extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loadingHeader: true,
-            loadingSidebar: true,
             windowWidth: 0,
             windowHeight: 0
         };
@@ -17,13 +14,16 @@ class PageLoader extends Component {
     render() {
         return (
             <div className="app">
-                <div className="app-main-container">
-                    Loading..........
+                <div className="container">
+                    Page Loading..........
                 </div>
             </div>
         );
     }
 }
 
-
-export default withRouter(PageLoader);
+/*Page loader nằm ngoài path route nên cần bọc vào withRouter
+* để component PageLoader có thể truy cập được this.props.history
+* và có thể chuyển hướng người dùng .
+*/
+export default PageLoader;

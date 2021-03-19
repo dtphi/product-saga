@@ -7,11 +7,6 @@ import {
  * initial app configs
  */
 const INIT_STATE = {
-  searchFormOpen: false,
-  startUserTour: false,
-  isDarkSidenav: false,
-  isShowErrorPopup: false,
-  isShowFormGPDR: false,
   loading: false,
   error: {
     response: {
@@ -22,39 +17,8 @@ const INIT_STATE = {
       }
     }
   },
-  themes: [
-    {
-      id: 1,
-      name: 'primary'
-    },
-    {
-      id: 2,
-      name: 'secondary'
-    },
-    {
-      id: 3,
-      name: 'warning'
-    },
-    {
-      id: 4,
-      name: 'info'
-    },
-    {
-      id: 5,
-      name: 'danger'
-    },
-    {
-      id: 6,
-      name: 'success'
-    }
-  ],
-  activeTheme: {
-    id: 1,
-    name: 'primary'
-  },
   showRootSpinner: false,
-  messageRootSpinner: null,
-  mainPageScrolledBottom: false
+  messageRootSpinner: null
 };
 
 const config = (state = INIT_STATE, action) => {

@@ -3,6 +3,9 @@
  */
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
+import { ThemeProvider } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import theme from './theme';
 import Views from '../pt_views';
 import {
     AsyncUserComponent
@@ -10,7 +13,6 @@ import {
 
 const InitView = ({ component: Component, auth }) =>
   <Route
-    
     render={props =>
       <Component {...props} />  
     }
@@ -20,16 +22,18 @@ class AppComponent extends Component {
 	render() {
     const { match } = this.props;
 		return (
-			<div className="App">
-        <InitView
-          path={`${match.url}app`}
-          auth={true}
-          component={Views}
-        />
-        <Switch>
-            <Route path="*" component={AsyncUserComponent} />
-        </Switch>
-      </div>
+			<ThemeProvider theme={theme}>
+        <Container>
+          <InitView
+            path={`${match.url}app`}
+            auth={true}
+            component={Views}
+          />
+          <Switch>
+              <Route path="/test" component={AsyncUserComponent} />
+          </Switch>
+        </Container>
+      </ThemeProvider>
 		);
 	}
 }

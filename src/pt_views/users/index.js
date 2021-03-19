@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import UserFormAdd from "./components/TheAddForm";
@@ -8,6 +9,7 @@ import {
     ModalBody,
     ModalFooter,
 } from "reactstrap";
+import './style.css';
 
 class UserList extends Component {
     constructor(props) {
@@ -55,16 +57,12 @@ class UserList extends Component {
      * On Change Add New User Details
      */
     onChangeAddNewUserDetails(key, value) {
-        if (key === "logo_thumbnail") {
-            this.convertBase64(value);
-        } else {
-            this.setState({
-                addNewUserDetail: {
-                    ...this.state.addNewUserDetail,
-                    [key]: value,
-                },
-            });
-        }
+        this.setState({
+            addNewUserDetail: {
+                ...this.state.addNewUserDetail,
+                [key]: value,
+            },
+        });
     }
 
     initialUserForm() {
@@ -82,36 +80,37 @@ class UserList extends Component {
     }
 
     render() {
+      console.log('user views', this)
     	const {addNewUserModal, errors, addNewUserDetail, loading} = this.state;
         
         return (
-            <div>
-            	<div>List uers async moment</div>
-            	<div className="button-add-new-user">
-                  <button
-                      onClick={() => this.openAddNewUserModal()}
-                      color="primary"
-                      className="caret btn-add-new"
-                  >
-                      <div className="gig-button text-white bg-black button-open-card-form add-new-seeker">
-                          
-                          AddUser
-                          &nbsp;
-                          <span className="plus">+</span>
-                      </div>
-                  </button>
-              </div>
+            <div className="page-content">
+              <link
+                rel='stylesheet'
+                href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'
+              />
+            	<div>User Page Demo</div>
             	<div>
-            		<Modal
+                  <Button
+                    color='primary'
+                    onClick={() => this.openAddNewUserModal()}
+                  >Add User&nbsp;
+                    <span className="plus">+</span>
+                  </Button>
+              </div>
+            	
+              <Modal aria-labelledby="simple-modal-title"
                     isOpen={addNewUserModal}
                     toggle={() => this.onAddUpdateUserModalClose()}
                 >
+                  <div className="modal-size">
                     <ModalHeader
+                      className="pt-modal-header"
                         toggle={() => this.onAddUpdateUserModalClose()}
                     >
-                        <span className="text-uppercase black thin user-font-size-header">AddUser</span>
+                        <span>AddUser</span>
                     </ModalHeader>
-                    <ModalBody>
+                    <ModalBody className="modal-body">
                       <UserFormAdd
                           errors={errors}
                           addNewUserDetails={addNewUserDetail}
@@ -120,11 +119,11 @@ class UserList extends Component {
                     </ModalBody>
                     <ModalFooter>
                       <Button
-                          className="text-white gig-button orange  line-height-1"
+                          color='primary'
                           onClick={() => this.addNewUser()}
                       >Save</Button>
                       <Button
-                          className="text-white gig-button black btn-cancel-user-color line-height-1"
+                          color='secondary'
                           onClick={() => this.onAddUpdateUserModalClose()}
                       >Cancel</Button>
                     </ModalFooter>
@@ -133,11 +132,11 @@ class UserList extends Component {
                           <CircularProgress />
                       </div>
                     )}
+                  </div>
                 </Modal>
-            	</div>
             </div>
         );
     }
 }
 
-export default UserList;
+export default connect(null)(UserList);

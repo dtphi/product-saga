@@ -2,9 +2,9 @@
  * App Routes
  */
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Route, withRouter, Switch } from "react-router-dom";
-
-// async component
+import MainLayout from '../pt_components/layout';
 import {
     AsyncUserComponent
 } from "../pt_components/async";
@@ -15,17 +15,16 @@ class MainView extends Component {
     render() {
         const { match } = this.props;
         return (
-            <div>
+            <MainLayout>
                 <Switch>
                     <Route
                         exact
-                        path={`${match.url}/users`}
                         component={AsyncUserComponent}
                     />
                 </Switch>
-            </div>
+            </MainLayout>
         );
     }
 }
 
-export default withRouter(MainView);
+export default withRouter(connect(null)(MainView));
