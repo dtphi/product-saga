@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 class PageLoader extends Component {
 
@@ -15,18 +14,11 @@ class PageLoader extends Component {
 
     }
 
-    componentDidMount() {
-        const { windowWidth } = this.state;
-        setTimeout(() => {
-            this.setState({ loadingHeader: false, loadingSidebar: false });
-        }, 114);
-    }
-
     render() {
         return (
             <div className="app">
                 <div className="app-main-container">
-                    Loading..............
+                    Loading..........
                 </div>
             </div>
         );

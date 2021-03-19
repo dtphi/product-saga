@@ -13,12 +13,12 @@ import {
 import DateIoMomentUtil from '@date-io/moment';
 import AppComponent from './pt_routes';
 import {
-	configStore
+	configureStore
 } from './pt_store';
 
 function App() {
   return (
-    <Provider store={configStore()}>
+    <Provider store={configureStore()}>
     	<MuiPickersUtilsProvider utils={DateIoMomentUtil}>
 	      <Router>
 	        <Switch>

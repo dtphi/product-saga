@@ -2,8 +2,7 @@
  * App Routes
  */
 import React, { Component } from "react";
-import { Route, withRouter, Redirect, Switch } from "react-router-dom";
-import { connect } from "react-redux";
+import { Route, withRouter, Switch } from "react-router-dom";
 
 // async component
 import {

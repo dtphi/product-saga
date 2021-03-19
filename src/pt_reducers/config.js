@@ -57,7 +57,7 @@ const INIT_STATE = {
   mainPageScrolledBottom: false
 };
 
-export default (state = INIT_STATE, action) => {
+const config = (state = INIT_STATE, action) => {
   switch (action.type) {
 
     case APP_SHOW_ROOT_SPINNER:
@@ -83,3 +83,5 @@ export default (state = INIT_STATE, action) => {
     default: return { ...state };
   }
 };
+
+export default config;
