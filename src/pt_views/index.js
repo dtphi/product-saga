@@ -13,10 +13,10 @@ import {
 class MainView extends Component {
 
     render() {
-        const { match, history } = this.props;
-        console.log('views',match)
+        const { match } = this.props;
+        
         return (
-            <MainLayout history={history}>
+            <MainLayout>
                 <Switch>
                     <Route
                         exact

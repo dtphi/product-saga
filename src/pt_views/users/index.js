@@ -207,12 +207,12 @@ class UserList extends Component {
         );
         
         return (
-            <div className="page-content">
+            <div className="page-content" style={{ backgroundColor: '#c7bbbb' }}> 
                 <link
                     rel='stylesheet'
                     href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'
                 />
-                    <div>User Page Demo</div>
+                    <div style={{color:'red', textAlign: 'center'}}>User Page Demo</div>
                     <div>
                     <Button
                         color='primary'
@@ -246,10 +246,12 @@ class UserList extends Component {
                     </ModalBody>
                     <ModalFooter>
                       <Button
+                        variant="contained"
                           color='primary'
                           onClick={() => this.addNewUser()}
                       >Save</Button>
                       <Button
+                        variant="contained"
                           color='secondary'
                           onClick={() => this.onAddUpdateUserModalClose()}
                       >Cancel</Button>
@@ -282,10 +284,12 @@ class UserList extends Component {
                     </ModalBody>
                     <ModalFooter>
                         <Button
+                            variant="contained"
                             color='primary'
                             onClick={() => this.editNewUser()}
                         >Update</Button>
                         <Button
+                            variant="contained"
                             color='secondary'
                             onClick={() => this.onEditUpdateUserModalClose()}
                         >Cancel</Button>
@@ -316,10 +320,12 @@ class UserList extends Component {
                     </ModalBody>
                     <ModalFooter>
                         <Button
+                            variant="contained"
                             color='primary'
                             onClick={() => this.editNewUser('delete')}
                         >Delete</Button>
                         <Button
+                            variant="contained"
                             color='secondary'
                             onClick={() => this.onEditUpdateUserModalClose('delete')}
                         >Cancel</Button>

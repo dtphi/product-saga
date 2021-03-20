@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
-  <React.StrictMode>
+// Check warning API .
+//https://reactjs.org/docs/strict-mode.html
+/*<React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>*/
+ReactDOM.render(
+  <App />,
   document.getElementById('root')
 );
 
