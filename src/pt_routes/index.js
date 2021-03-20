@@ -2,21 +2,21 @@
  * App.js Layout Start Here
  */
 import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import theme from './theme';
 import Views from '../pt_views';
-import {
-    AsyncUserComponent
-} from "../pt_components/async";
 
-const InitView = ({ component: Component, auth }) =>
+const InitView = ({ component: Component , ...rest}) =>
   <Route
-    render={props =>
-      <Component {...props} />  
+    {...rest}
+    render={routeProps =>
+      <Component {...routeProps} />  
     }
   />;
+//https://reactrouter.com/web/api/Route
+let appPrefix = 'd';
 
 class AppComponent extends Component {
 	render() {
@@ -25,13 +25,10 @@ class AppComponent extends Component {
 			<ThemeProvider theme={theme}>
         <Container>
           <InitView
-            path={`${match.url}app`}
+            path={`${match.url+appPrefix.concat('e', 'm', 'o')}`}
             auth={true}
             component={Views}
           />
-          <Switch>
-              <Route path="/test" component={AsyncUserComponent} />
-          </Switch>
         </Container>
       </ThemeProvider>
 		);

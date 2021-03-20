@@ -1,10 +1,9 @@
 import React from 'react';
-import Button from "@material-ui/core/Button";
 import {
   Form, FormGroup, Label
 } from 'reactstrap';
-const TheUserList = ({
-  userRecord, onOpenEditNewUserModal, onOpenDeleteNewUserModal
+const TheUserDeleteConfirm = ({
+  userRecord
 }) => (
   <div>
     <Form>
@@ -17,16 +16,6 @@ const TheUserList = ({
       <FormGroup>
         <Label for="userEmail">
           Email : {userRecord.email}
-          <Button
-              color='primary'
-              onClick={() => onOpenEditNewUserModal(userRecord)}
-              >Edit&nbsp;
-          </Button>
-          <Button
-              color='secondary'
-              onClick={() => onOpenDeleteNewUserModal(userRecord)}
-              >Delete&nbsp;
-          </Button>
         </Label>
       </FormGroup>
 
@@ -39,4 +28,4 @@ const TheUserList = ({
   </div>
 );
 
-export default TheUserList;
+export default TheUserDeleteConfirm;

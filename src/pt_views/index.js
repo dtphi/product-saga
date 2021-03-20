@@ -13,12 +13,15 @@ import {
 class MainView extends Component {
 
     render() {
-        const { match } = this.props;
+        const { match, history } = this.props;
+        console.log('views',match)
         return (
-            <MainLayout>
+            <MainLayout history={history}>
                 <Switch>
                     <Route
                         exact
+                        strict
+                        path={`${match.url}/users`}
                         component={AsyncUserComponent}
                     />
                 </Switch>
